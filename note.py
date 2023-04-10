@@ -1,15 +1,15 @@
-import datetime
+from datetime import datetime
 
 
 class Note:
     i = 0
 
-    def __init__(self, data_list):
-        self.__class__.i += 1
+    def __init__(self, data_list, cur_id=0):
+        self.__class__.i = cur_id + 1
         self.i = self.__class__.i
         self.head = data_list[0]
         self.body = data_list[1]
-        self.date = datetime.datetime
+        self.date = str(datetime.date(datetime.today()))
 
     def get_h(self):
         return self.head
@@ -20,7 +20,7 @@ class Note:
     def get_d(self):
         return self.date
 
-    def get_info(self):
+    def get_info(self, cur_id=0):
         return f'{self.i};{self.head};{self.body};{self.date}'
 
     @classmethod
