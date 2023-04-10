@@ -20,6 +20,9 @@ class Note:
     def get_d(self):
         return self.date
 
+    def get_info(self):
+        return f'{self.i};{self.head};{self.body};{self.date}'
+
     @classmethod
     def get_id(cls):
         return cls.i
