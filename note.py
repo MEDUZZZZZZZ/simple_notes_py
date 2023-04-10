@@ -1,3 +1,6 @@
+import datetime
+
+
 class Note:
     i = 0
 
@@ -6,7 +9,17 @@ class Note:
         self.i = self.__class__.i
         self.head = data_list[0]
         self.body = data_list[1]
+        self.date = datetime.datetime
+
+    def get_h(self):
+        return self.head
+
+    def get_b(self):
+        return self.body
+
+    def get_d(self):
+        return self.date
 
     @classmethod
-    def cur_id_getter(cls):
+    def get_id(cls):
         return cls.i
