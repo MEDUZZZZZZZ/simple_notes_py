@@ -6,7 +6,7 @@ from get_base import get_base
 csv_file_path = pathlib.Path('.', 'files', 'databse.csv')
 
 
-def add_note(path: pathlib.WindowsPath, input: note.Note):
+def add_note(input: note.Note, path=csv_file_path):
     with open(path, mode='ab', encoding='utf-8') as db:
         c_note = input.get_info()
         db.write(c_note)
@@ -22,11 +22,11 @@ def search_note(request: str):
             res.append(c_note)
             flag = 1
     if flag != 1:
-        res.append(f'Note by request: {request} not found')  # Можетсделать возврат строки 
+        res.append(f'Note by request: {request} not found')
     return res
 
 
-def delete_note(path: pathlib.WindowsPath, request: str):
+def delete_note(request: str, path=csv_file_path):
     to_delete = search_note(request)[0]
     pattern = re.compile(re.escape(to_delete))
     notes_list = get_base(path)
@@ -39,7 +39,7 @@ def delete_note(path: pathlib.WindowsPath, request: str):
     return "Selected note deleted"
 
 
-def edit_note(path: pathlib.WindowsPath, request: str, edited: str):
+def edit_note(request: str, edited: str, path=csv_file_path):
     to_edit = search_note(request)[0]
     pattern = re.compile(re.escape(to_edit))
     notes_list = get_base(path)

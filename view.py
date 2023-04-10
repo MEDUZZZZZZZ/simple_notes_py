@@ -6,7 +6,7 @@ from get_base import get_base
 def ui_input(key: int):
     match key:
         case 1:
-            message = "Введите запрос: "  # по этому запросу находим методом search(model) нужную нам заметку, показываем методом convert_to_output
+            message = "Введите запрос: "
         case 2:
             message = "Введите название заметки: "
         case 3:
@@ -32,7 +32,7 @@ def convert_to_output(sourse: str):
 def start_message():
     welcome = "Добро пожаловать в приложение заметки!\n\
 Для работы вам могут пригодиться следющие команды:\
-'show_al' - показать все заметки\
+'show_all' - показать все заметки\
 'search' - найти и показать заметку\
 'add' - добавить заметку\
 'edit' - изменить заметку\
@@ -41,7 +41,7 @@ def start_message():
 \nВведите команду: "
     return str(input(welcome)).lower()
 
-    
+
 def show_all():
     res = ''
     notes_list = get_base()
@@ -57,6 +57,7 @@ def user_add():
     this_note = note.Note(tmp)
     return this_note
 
+
 def ui_choose_note(sourse: list[str]):
     count = 0
     print(f'Нашлось {len(sourse)} заметок по вашему запросу\n')
@@ -71,7 +72,7 @@ def ui_choose_note(sourse: list[str]):
         return ui_choose_note(sourse)
 
 
-def ui_edit(mode: int, note_to_edit: str):
+def ui_edit(note_to_edit: str, mode=ui_input(5)):
     new_note = note_to_edit.split(";")
     result = ''
     match mode:
@@ -89,6 +90,4 @@ def ui_edit(mode: int, note_to_edit: str):
             new_note[2] = new_body
     new_note[3] = datetime.datetime
     result = ";".join(new_note)
-    print('Заметка успешно изменена')
     return result
-    
