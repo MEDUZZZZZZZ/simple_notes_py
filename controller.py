@@ -3,6 +3,7 @@ import model
 
 
 def run_app():
+    view.welcome()
     while True:
         buttn = view.start_message()
         match buttn.lower():
@@ -67,4 +68,4 @@ def run_app():
             case "exit":
                 break
             case _:
-                print('Не верная команда')
+                print("\nНе верная команда\n")

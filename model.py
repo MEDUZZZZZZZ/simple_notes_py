@@ -1,9 +1,11 @@
 import pathlib
+# import os.path
 import note
 import re
 from get_base import get_base
 
-csv_file_path = pathlib.Path('.', 'simple_notes_py', 'files', 'database.csv')
+csv_file_path = pathlib.Path(pathlib.Path.cwd(), 'db', 'database.csv')
+# csv_file_path = os.path.abspath('db\database.csv')
 
 
 def add_note(input: note.Note, path=csv_file_path):
@@ -22,7 +24,7 @@ def search_note(request: str):
             res.append(c_note)
             flag = 1
     if flag != 1:
-        res.append(f'Заметка по запросу: {request} не найдена')
+        res.append(f"Заметка по запросу: {request} не найдена")
     return res
 
 

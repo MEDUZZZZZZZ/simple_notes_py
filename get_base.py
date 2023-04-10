@@ -1,6 +1,9 @@
+# import os.path
 import pathlib
 
-csv_file_path = pathlib.Path('.', 'simple_notes_py', 'files', 'database.csv')
+
+csv_file_path = pathlib.Path(pathlib.Path.cwd(), 'db', 'database.csv')
+# csv_file_path = os.path.abspath('db\database.csv')
 
 
 def get_base():
